@@ -971,13 +971,14 @@ export default class ResizableColumns {
 	@return {Number} Text width
 	**/
 	getTextWidth($el, $fakeEl) {
+		var text = $el.text().trim().replace(/\s/g, '&nbsp;') + '&nbsp;'; //add extra space to ensure we are not elipsing anything
 		return $fakeEl.css({
 			'fontFamily': $el.css('fontFamily'),
 			'fontSize': $el.css('fontSize'),
 			'fontWeight': $el.css('fontWeight'),
 			'padding': $el.css('padding'),
 			'border': $el.css('border')})
-		.html($el.text().replace(/\s/g, '&nbsp;'))
+		.html(text)
 		.outerWidth(true);
 	}
 
